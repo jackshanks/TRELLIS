@@ -405,6 +405,7 @@ def to_glb(
     texture_size: int = 1024,
     debug: bool = False,
     verbose: bool = True,
+    mode: Literal['fast', 'opt'] = 'opt'
 ) -> trimesh.Trimesh:
     """
     Convert a generated asset to a glb file.
@@ -447,7 +448,7 @@ def to_glb(
     texture = bake_texture(
         vertices, faces, uvs,
         observations, masks, extrinsics, intrinsics,
-        texture_size=texture_size, mode='opt',
+        texture_size=texture_size, mode=mode,
         lambda_tv=0.01,
         verbose=verbose
     )
